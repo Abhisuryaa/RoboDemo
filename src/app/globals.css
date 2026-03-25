@@ -1,0 +1,114 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg-base: #ffffff;
+  --color-bg-surface: #ffffff;
+  --color-text-primary: #0a0a0a;
+  --color-text-secondary: #3a3a3a;
+  --color-text-muted: #7a7a7a;
+  --color-accent: #1a1a1a;
+  
+  --font-display: var(--font-syne);
+  --font-body: var(--font-dm-sans);
+  
+  --animate-shimmer: shimmer 5s infinite;
+  --animate-ticker: ticker 30s linear infinite;
+
+  @keyframes shimmer {
+    from { background-position: -200% 0; }
+    to { background-position: 200% 0; }
+  }
+  @keyframes ticker {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+}
+
+:root {
+  --bg-base: #ffffff;
+  --bg-surface: #ffffff;
+  --glass-bg: rgba(255, 255, 255, 0.25);
+  --glass-border: rgba(255, 255, 255, 0.45);
+  --glass-shadow: rgba(0, 0, 0, 0.08);
+  --text-primary: #0a0a0a;
+  --text-secondary: #3a3a3a;
+  --text-muted: #7a7a7a;
+  --accent: #1a1a1a;
+}
+
+html, body {
+  background-color: #ffffff !important;
+  background-image: none !important;
+  box-shadow: none !important;
+  position: relative;
+}
+
+body {
+  font-family: var(--font-dm-sans), ui-sans-serif, system-ui, sans-serif;
+  @apply bg-bg-base text-text-primary overflow-x-hidden antialiased;
+}
+
+section {
+  background-color: #ffffff !important;
+  position: relative !important;
+}
+
+.font-display {
+  font-family: var(--font-syne), ui-sans-serif, system-ui, sans-serif;
+}
+
+.font-body {
+  font-family: var(--font-dm-sans), ui-sans-serif, system-ui, sans-serif;
+}
+
+/* --- GLASSMORPHISM UTILITIES --- */
+.glass {
+  @apply bg-white/20 backdrop-blur-[20px] saturate-[180%] border border-white/50 rounded-[24px];
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.6);
+}
+
+.glass-dark {
+  @apply bg-text-primary/[0.06] backdrop-blur-[20px] saturate-[180%] border border-text-primary/5 rounded-[32px];
+}
+
+
+
+/* --- BUTTONS --- */
+.btn {
+  font-family: var(--font-syne), ui-sans-serif, system-ui, sans-serif;
+  @apply inline-flex items-center justify-center px-7 py-3.5 rounded-full font-semibold text-sm transition-all duration-300 cursor-pointer border-none;
+}
+
+.btn-primary {
+  @apply bg-accent text-white shadow-[0_4px_12px_rgba(0,0,0,0.1)] hover:scale-[1.03] active:scale-[0.97];
+}
+
+.btn-ghost {
+  @apply bg-transparent text-text-primary border border-text-primary hover:bg-black/5 hover:scale-[1.03] active:scale-[0.97];
+}
+
+/* --- SPLINE POLISH --- */
+canvas {
+  background: transparent !important;
+  outline: none !important;
+}
+
+/* Aggressive watermark removal */
+[class*="spline"] a,
+a[href*="spline.design"],
+#spline-watermark {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+.spline-container {
+  @apply relative;
+}
+
+/* Ensure glass cards stand out on white */
+.glass {
+  @apply bg-white/40 backdrop-blur-[20px] saturate-[180%] border border-black/5 rounded-[24px];
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.04), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
